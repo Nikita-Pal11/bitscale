@@ -70,29 +70,30 @@ export default function FindCompanyModal({ isOpen, onClose }: FindCompanyModalPr
 
           <main className="flex-1 flex flex-col gap-3.5 min-w-0 overflow-hidden h-full">
             
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0 pr-10">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center justify-between shrink-0 pr-8 sm:pr-10">
               
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <button
                   onClick={() => setShowMobileFilters(true)}
-                  className="flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 active:scale-95 transition-all md:hidden cursor-pointer shadow-xs shrink-0"
+                  className="flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2 py-1 text-[11px] font-semibold text-slate-700 hover:bg-slate-50 active:scale-95 transition-all md:hidden cursor-pointer shadow-xs shrink-0"
                 >
-                  <SlidersHorizontal size={13} className="text-slate-500" />
+                  <SlidersHorizontal size={12} className="text-slate-500" />
                 </button>
-                <span className="text-xs font-medium text-slate-500">
+                <span className="text-[10px] sm:text-xs font-medium text-slate-500">
                   Found 0 companies. Click preview to view results
                 </span>
               </div>
 
-              <div className="flex items-center gap-3 ml-auto sm:ml-0">
-                <div className="flex items-center gap-1.2 rounded-full border border-amber-200 bg-amber-50/70 px-2.5 py-1 text-[11px] font-bold text-[#b45309] shrink-0">
-                  <Search size={12} className="text-[#b45309]" />
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 ml-auto sm:ml-0">
+                <div className="flex items-center gap-1 rounded-full border border-amber-200 bg-amber-50/70 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[10px] sm:text-[11px] font-bold text-[#b45309] shrink-0">
+                  <Search size={10} className="text-[#b45309] sm:size-3" />
                   <span>8000/50000</span>
                 </div>
 
-                <div className="flex items-center gap-1.2 text-[11px] font-bold text-[#d97706] hover:underline cursor-pointer shrink-0">
-                  <Lock size={12} className="fill-[#d97706]/10 text-[#d97706] shrink-0" />
-                  <span>Unlock 100,000 leads with Enterprise Plan*</span>
+                <div className="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-[#d97706] hover:underline cursor-pointer shrink-0">
+                  <Lock size={10} className="fill-[#d97706]/10 text-[#d97706] sm:size-3 shrink-0" />
+                  <span className="hidden sm:inline">Unlock 100,000 leads with Enterprise Plan*</span>
+                  <span className="sm:hidden">Unlock 100k leads</span>
                 </div>
               </div>
 

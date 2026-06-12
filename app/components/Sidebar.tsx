@@ -11,6 +11,7 @@ import {
   ChevronRight,
   ChevronDown,
   ChevronUp,
+  Rocket,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarGroup, AvatarImage } from "@/components/ui/avatar";
 import { HiChevronUpDown } from "react-icons/hi2";
@@ -29,6 +30,11 @@ const Sidebar = () => {
     {
       name: "Playbooks",
       icon: BookOpen,
+      badge: (
+        <div className="flex items-center justify-center bg-[#fef3c7] text-[#b45309] rounded-full px-2.5 py-1">
+          <Rocket size={12} strokeWidth={2.5} />
+        </div>
+      ),
     },
     {
       name: "Integrations",
@@ -116,7 +122,7 @@ const Sidebar = () => {
                     <span>{item.name}</span>
                   </div>
 
-                  {item.active && <ChevronRight size={16} />}
+                  {item.badge ? item.badge : item.active && <ChevronRight size={16} />}
                 </button>
               );
             })}

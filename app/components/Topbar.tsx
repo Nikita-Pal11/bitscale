@@ -33,7 +33,7 @@ export default function Topbar() {
             </span>
           </div>
           <div>
-            <Badge className="hidden h-[24px] w-[120px] cursor-default select-none rounded-full bg-[#438361] px-2.5 py-1 text-xs text-[#ffffff] ring-1 ring-green-500/30 hover:bg-green-500/20 dark:text-green-400 sm:flex sm:items-center">
+            <Badge className="hidden h-[24px] w-[100px] cursor-default select-none rounded-full bg-[#438361] px-2.5 py-1 text-xs text-[#ffffff] ring-1 ring-green-500/30 hover:bg-green-500/20 dark:text-green-400 sm:flex sm:items-center">
               Booster Plan
             </Badge>
             <Badge className="flex cursor-default select-none rounded-full bg-[#438361] px-2 py-0.5 text-[10px] text-[#ffffff] ring-1 ring-green-500/30 dark:text-white sm:hidden">

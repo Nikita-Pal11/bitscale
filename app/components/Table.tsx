@@ -91,10 +91,10 @@ export default function Table() {
         <div className="flex border-b">
           <button
             onClick={() => setActiveTab("all")}
-            className={`border-b-2 px-5 py-3 font-medium transition-all duration-200 ${
+            className={`text-sm font-medium pb-2.5 px-1 mr-6 transition-colors whitespace-nowrap border-b-2 ${
               activeTab === "all"
                 ? "border-blue-600 text-blue-600"
-                : "border-transparent text-slate-500 hover:text-slate-800"
+                : "border-transparent text-slate-400 hover:text-slate-600"
             }`}
           >
             My Grids
@@ -102,30 +102,30 @@ export default function Table() {
 
           <button
             onClick={() => setActiveTab("starred")}
-            className={`border-b-2 px-5 py-3 font-medium transition-all duration-200 ${
+            className={`text-sm font-medium pb-2.5 px-1 mr-6 transition-colors whitespace-nowrap border-b-2 ${
               activeTab === "starred"
                 ? "border-blue-600 text-blue-600"
-                : "border-transparent text-slate-500 hover:text-slate-800"
+                : "border-transparent text-slate-400 hover:text-slate-600"
             }`}
           >
             Starred
           </button>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <div className="flex h-10 items-center gap-2 rounded-xl bg-slate-100 px-4">
-            <Search size={18} className="text-slate-500" />
+            <Search size={16} className="text-slate-500" />
             <input
               type="text"
               placeholder="Search grids and workbooks..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-[220px] bg-transparent text-sm outline-none md:w-[280px]"
+              className="w-[220px] bg-transparent text-[13px] text-gray-700 placeholder-gray-500 outline-none md:w-[280px]"
             />
           </div>
 
           <button className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100">
-            <ListFilter size={18} />
+            <ListFilter size={16} />
           </button>
         </div>
       </div>
@@ -133,19 +133,18 @@ export default function Table() {
       <div className="overflow-x-auto">
         <table className="min-w-[950px] w-full">
           <thead>
-            <tr className="border-b text-left text-sm text-slate-600">
-              <th className="py-4 pl-6 text-left" colSpan={2}>
-                <div className="flex items-center gap-2 font-bold text-gray-800">
-                  Name
-                  <span className="text-gray-800 font-bold">↑</span>
+            <tr className="border-b text-left text-[13px] font-medium text-slate-800">
+              <th className="py-3 pl-6 text-left" colSpan={2}>
+                <div className="flex items-center gap-1.5 font-medium text-gray-800">
+                  Name <span className="text-gray-800">↑</span>
                 </div>
               </th>
 
-              <th className="w-48 py-4 font-bold text-gray-800">Edited by</th>
+              <th className="w-48 py-3 font-medium text-gray-800">Edited by</th>
 
-              <th className="w-40 py-4 font-bold text-gray-800">Last edited</th>
+              <th className="w-40 py-3 font-medium text-gray-800">Last edited</th>
 
-              <th className="w-20 py-4 font-bold text-gray-800">Actions</th>
+              <th className="w-20 py-3 font-medium text-gray-800">Actions</th>
             </tr>
           </thead>
 
@@ -183,10 +182,10 @@ export default function Table() {
                 const index = item.originalIndex;
                 return (
                   <tr key={index} className="border-b hover:bg-slate-50">
-                    <td className="py-4">
+                    <td className="py-3.5">
                       <div className="flex items-center gap-3">
                         {item.expanded ? (
-                          <ChevronDown size={16} className="text-slate-500" />
+                          <ChevronDown size={14} className="text-slate-500" />
                         ) : (
                           <div className="w-4"></div>
                         )}
@@ -197,10 +196,11 @@ export default function Table() {
                           aria-label={starred.has(index) ? "Unstar" : "Star"}
                         >
                           <Star
-                            size={20}
+                            size={15}
+                            strokeWidth={1.8}
                             className={`transition-colors ${
                               starred.has(index)
-                                ? "text-amber-400"
+                                ? "fill-amber-400 text-amber-400"
                                 : "fill-transparent text-slate-400 hover:text-amber-300"
                             }`}
                           />
@@ -238,27 +238,27 @@ export default function Table() {
                       </div>
                     </td>
 
-                    <td className="py-4 pl-4">
-                      <p className="font-medium text-slate-700">{item.name}</p>
+                    <td className="py-3.5 pl-4">
+                      <p className="text-sm font-medium text-slate-700">{item.name}</p>
                     </td>
 
-                    <td className="py-4">
-                      <div className="flex items-center gap-3">
+                    <td className="py-3.5">
+                      <div className="flex items-center gap-2">
                         <img
                           src={`https://i.pravatar.cc/150?img=${index + 10}`}
                           alt=""
                           className="h-8 w-8 rounded-full"
                         />
 
-                        <span className="text-slate-700">{item.editor}</span>
+                        <span className="text-sm text-slate-700 truncate">{item.editor}</span>
                       </div>
                     </td>
 
-                    <td className="py-4 text-slate-700">{item.date}</td>
+                    <td className="py-3.5 text-sm text-slate-500">{item.date}</td>
 
-                    <td className="py-4">
-                      <button>
-                        <MoreHorizontal size={18} />
+                    <td className="py-3.5 flex items-center justify-center">
+                      <button className="text-slate-400 hover:text-slate-700 transition-colors">
+                        <MoreHorizontal size={16} />
                       </button>
                     </td>
                   </tr>

@@ -5,37 +5,27 @@ import { Building2, Users, Plus, CheckCircle2, Circle } from "lucide-react";
 import FindCompanyModal from "./Company.tsx/FindCompanyModal";
 import { FaFileCircleCheck } from "react-icons/fa6";
 
-const slides = [
+const CAROUSEL_DATA = [
   {
-    title: "How to Integrate 2 Way HubSpot",
-    description: "Prerequisites for this Integration is that you should have a HubSpot account and Copy the API key. We simple aad our API key through the integrations pa...",
-    date: "Posted today",
-    thumbnail: "/video.png",
-    bgColor: "bg-[#E7F3F8]",
-    textColor: "text-[#347FA9]",
-    dotActiveColor: "bg-[#347FA9]",
-    dotInactiveColor: "bg-[#8DBAD0]",
+    theme: { bg: '#f2f7fb', accent: '#417e9f', dotInactive: '#a4bed0' },
+    title: 'How to Integrate 2 Way HubSpot',
+    description: 'Prerequisites for this Integration is that you should have a HubSpot account and Copy the API key. We simple aad our API key through the integrations pa...'
   },
   {
-    title: "Leveraging AI for Outbound Campaigns",
-    description: "Discover how to configure custom prompts and variables to hyper-personalize your outreach at scale using our new AI agent capabilities.",
-    date: "Posted 2 days ago",
-    thumbnail: "/video.png",
-    bgColor: "bg-[#FDF2F8]",
-    textColor: "text-[#BE185D]",
-    dotActiveColor: "bg-[#BE185D]",
-    dotInactiveColor: "bg-[#FBCFE8]",
+    theme: { bg: '#fdf4f6', accent: '#c44a78', dotInactive: '#dfa6ba' },
+    title: 'How to find LinkedIn Post using Bitscale',
+    description: 'This walkthrough covers how you can find the top performing posts on LinkedIn based on a keyword and all information of the people who posted...'
   },
   {
-    title: "Setting up Custom webhooks in Bitscale",
-    description: "Learn how to stream new data entries dynamically from your workspace tables directly to any external API or endpoint with zero latency.",
-    date: "Posted 5 days ago",
-    thumbnail: "/video.png",
-    bgColor: "bg-[#F5F3FF]",
-    textColor: "text-[#6D28D9]",
-    dotActiveColor: "bg-[#6D28D9]",
-    dotInactiveColor: "bg-[#DDD6FE]",
+    theme: { bg: '#f4f8f4', accent: '#468364', dotInactive: '#97bca9' },
+    title: 'How to set Custom API in waterfall',
+    description: 'This walkthrough covers how you can find the top performing posts on LinkedIn based on a keyword and all information of the people who posted...'
   },
+  {
+    theme: { bg: '#f7f5f9', accent: '#876ea4', dotInactive: '#c0b0cf' },
+    title: 'Introducing Grid Scheduling',
+    description: 'This walkthrough covers how you can find the top performing posts on LinkedIn based on a keyword and all information of the people who posted...'
+  }
 ];
 
 const WelcomeSection = () => {
@@ -44,12 +34,12 @@ const WelcomeSection = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      setCurrentSlide((prev) => (prev + 1) % CAROUSEL_DATA.length);
     }, 2000);
     return () => clearInterval(timer);
   }, []);
 
-  const slide = slides[currentSlide];
+  const slide = CAROUSEL_DATA[currentSlide];
 
   return (
     <section className="w-full p-4 md:p-6">
@@ -63,42 +53,54 @@ const WelcomeSection = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2">
-          <button className="flex items-center gap-2 rounded-lg border bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
-            <Building2 size={16} className="text-[#438361]" />
+        <div className="grid grid-cols-2 gap-2 w-full sm:w-auto md:flex md:w-auto">
+          <button className="flex items-center justify-center gap-1.5 rounded-lg border bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 w-full md:w-auto">
+            <Building2 size={14} className="text-[#438361]" />
             Find Companies
           </button>
 
           <button
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center gap-2 rounded-lg border bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            className="flex items-center justify-center gap-1.5 rounded-lg border bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 w-full md:w-auto"
           >
-            <Users size={16} className="text-purple-600" />
+            <Users size={14} className="text-[#876ea4]" />
             Find People
           </button>
 
-          <button className="flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800">
-            <Plus size={16} />
+          <button className="col-span-2 flex items-center justify-center gap-1.5 rounded-lg bg-slate-900 px-3 py-1.5 text-xs font-medium text-white hover:bg-slate-800 w-full md:w-auto">
+            <Plus size={14} />
             New Grid
           </button>
         </div>
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-4 xl:grid-cols-2">
-        <div className={`rounded-xl p-4 transition-all duration-500 ${slide.bgColor}`}>
+        <div
+          className="rounded-xl p-4 transition-all duration-500"
+          style={{ backgroundColor: slide.theme.bg }}
+        >
           <div className="mb-4 flex items-center justify-between">
-            <h3 className={`font-medium transition-colors duration-500 ${slide.textColor}`}>
+            <h3
+              className="font-medium transition-colors duration-500"
+              style={{ color: slide.theme.accent }}
+            >
               Latest from Bitscale
             </h3>
 
             <div className="flex gap-1">
-              {slides.map((_, index) => (
+              {CAROUSEL_DATA.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   className={`h-[6px] rounded-full transition-all duration-350 cursor-pointer ${
-                    index === currentSlide ? `w-[24px] ${slide.dotActiveColor}` : `w-[6px] ${slide.dotInactiveColor}`
+                    index === currentSlide ? "w-[24px]" : "w-[6px]"
                   }`}
+                  style={{
+                    backgroundColor:
+                      index === currentSlide
+                        ? slide.theme.accent
+                        : slide.theme.dotInactive,
+                  }}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
@@ -108,7 +110,7 @@ const WelcomeSection = () => {
           <div className="flex flex-col gap-4 sm:flex-row transition-all duration-500">
             <div className="relative overflow-hidden rounded-lg shrink-0">
               <img
-                src={slide.thumbnail}
+                src="/video.png"
                 alt={slide.title}
                 className="h-[97px] w-full object-cover sm:w-[143px]"
               />
@@ -131,7 +133,9 @@ const WelcomeSection = () => {
                 </p>
               </div>
 
-              <p className="mt-2 text-xs text-slate-400 transition-all duration-300">{slide.date}</p>
+              <p className="mt-2 text-xs text-slate-400 transition-all duration-300">
+                Video tutorial
+              </p>
             </div>
           </div>
         </div>
@@ -170,17 +174,17 @@ const WelcomeSection = () => {
 
           <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
             <div className="flex items-center gap-2 text-sm text-slate-700">
-              <CheckCircle2 size={16} className="fill-sky-500 text-white" />
+              <CheckCircle2 size={16} className="fill-[#417e9f] text-white" />
               Create your data list
             </div>
 
             <div className="flex items-center gap-2 text-sm text-slate-700">
-              <CheckCircle2 size={16} className="fill-sky-500 text-white" />
+              <CheckCircle2 size={16} className="fill-[#417e9f] text-white" />
               Learn about BitAgent
             </div>
 
             <div className="flex items-center gap-2 text-sm text-slate-700">
-              <CheckCircle2 size={16} className="fill-sky-500 text-white" />
+              <CheckCircle2 size={16} className="fill-[#417e9f] text-white" />
               Connect an integration
             </div>
 
