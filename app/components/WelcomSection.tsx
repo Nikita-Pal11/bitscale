@@ -1,11 +1,55 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Building2, Users, Plus, CheckCircle2, Circle } from "lucide-react";
 import FindCompanyModal from "./Company.tsx/FindCompanyModal";
 import { FaFileCircleCheck } from "react-icons/fa6";
+
+const slides = [
+  {
+    title: "How to Integrate 2 Way HubSpot",
+    description: "Prerequisites for this Integration is that you should have a HubSpot account and Copy the API key. We simple aad our API key through the integrations pa...",
+    date: "Posted today",
+    thumbnail: "/video.png",
+    bgColor: "bg-[#E7F3F8]",
+    textColor: "text-[#347FA9]",
+    dotActiveColor: "bg-[#347FA9]",
+    dotInactiveColor: "bg-[#8DBAD0]",
+  },
+  {
+    title: "Leveraging AI for Outbound Campaigns",
+    description: "Discover how to configure custom prompts and variables to hyper-personalize your outreach at scale using our new AI agent capabilities.",
+    date: "Posted 2 days ago",
+    thumbnail: "/video.png",
+    bgColor: "bg-[#FDF2F8]",
+    textColor: "text-[#BE185D]",
+    dotActiveColor: "bg-[#BE185D]",
+    dotInactiveColor: "bg-[#FBCFE8]",
+  },
+  {
+    title: "Setting up Custom webhooks in Bitscale",
+    description: "Learn how to stream new data entries dynamically from your workspace tables directly to any external API or endpoint with zero latency.",
+    date: "Posted 5 days ago",
+    thumbnail: "/video.png",
+    bgColor: "bg-[#F5F3FF]",
+    textColor: "text-[#6D28D9]",
+    dotActiveColor: "bg-[#6D28D9]",
+    dotInactiveColor: "bg-[#DDD6FE]",
+  },
+];
+
 const WelcomeSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const slide = slides[currentSlide];
 
   return (
     <section className="w-full p-4 md:p-6">
@@ -41,44 +85,53 @@ const WelcomeSection = () => {
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-4 xl:grid-cols-2">
-        <div className="rounded-xl p-4 bg-[#E7F3F8]">
+        <div className={`rounded-xl p-4 transition-all duration-500 ${slide.bgColor}`}>
           <div className="mb-4 flex items-center justify-between">
-            <h3 className="font-medium text-[#347FA9]">Latest from Bitscale</h3>
+            <h3 className={`font-medium transition-colors duration-500 ${slide.textColor}`}>
+              Latest from Bitscale
+            </h3>
 
             <div className="flex gap-1">
-              <div className="h-[6PX] w-[24PX] rounded-full bg-[#347FA9]"></div>
-              <div className="h-[6PX] w-[6PX] rounded-full bg-[#8DBAD0]"></div>
-              <div className="h-[6PX] w-[6PX] rounded-full bg-[#8DBAD0]"></div>
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`h-[6px] rounded-full transition-all duration-350 cursor-pointer ${
+                    index === currentSlide ? `w-[24px] ${slide.dotActiveColor}` : `w-[6px] ${slide.dotInactiveColor}`
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
             </div>
           </div>
 
-          <div className="flex flex-col gap-4 sm:flex-row">
-            <div className="relative overflow-hidden rounded-lg">
+          <div className="flex flex-col gap-4 sm:flex-row transition-all duration-500">
+            <div className="relative overflow-hidden rounded-lg shrink-0">
               <img
-                src="/video.png"
-                alt="Video Thumbnail"
+                src={slide.thumbnail}
+                alt={slide.title}
                 className="h-[97px] w-full object-cover sm:w-[143px]"
               />
 
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow cursor-pointer hover:scale-105 active:scale-95 transition-transform">
                   ▶
                 </div>
               </div>
             </div>
 
-            <div className="flex-1">
-              <h4 className="font-medium text-slate-800">
-                How to Integrate 2 Way HubSpot
-              </h4>
+            <div className="flex-1 min-h-[97px] flex flex-col justify-between">
+              <div>
+                <h4 className="font-medium text-slate-800 transition-all duration-300">
+                  {slide.title}
+                </h4>
 
-              <p className="mt-1 text-sm text-slate-500">
-                Prerequisites for this Integration is that you should have a
-                HubSpot account and Copy the API key. We simple aad our API key
-                through the integrations pa...
-              </p>
+                <p className="mt-1 text-sm text-slate-500 line-clamp-2 transition-all duration-300">
+                  {slide.description}
+                </p>
+              </div>
 
-              <p className="mt-2 text-xs text-slate-400">Posted today</p>
+              <p className="mt-2 text-xs text-slate-400 transition-all duration-300">{slide.date}</p>
             </div>
           </div>
         </div>
