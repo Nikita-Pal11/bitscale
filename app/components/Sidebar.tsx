@@ -60,18 +60,15 @@ const Sidebar = () => {
           md:translate-x-0
         `}
       >
-        <div className="flex justify-end p-4 md:hidden">
-          <button onClick={closeSidebar}>
-            <X size={22} />
-          </button>
-        </div>
-
-        <div className="px-6 pb-4 pt-2 border-b border-slate-200">
+        <div className="flex items-center justify-between px-6 py-3 border-b border-slate-200">
           <img
             src="/logo.png"
             alt="Bitscale Logo"
             className="h-8 object-contain"
           />
+          <button onClick={closeSidebar} className="md:hidden text-slate-700 hover:text-slate-900 transition-colors pr-2">
+            <X size={20} />
+          </button>
         </div>
 
         <div className="mx-4 mb-6 flex items-center justify-between px-3 py-3 border-b border-slate-200">
