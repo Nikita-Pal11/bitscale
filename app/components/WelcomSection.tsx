@@ -9,7 +9,6 @@ const WelcomeSection = () => {
 
   return (
     <section className="w-full p-4 md:p-6">
-      
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-slate-800">
@@ -22,7 +21,7 @@ const WelcomeSection = () => {
 
         <div className="flex flex-wrap gap-2">
           <button className="flex items-center gap-2 rounded-lg border bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
-            <Building2 size={16} className="text-green-600" />
+            <Building2 size={16} className="text-[#438361]" />
             Find Companies
           </button>
 
@@ -41,9 +40,7 @@ const WelcomeSection = () => {
         </div>
       </div>
 
-      
       <div className="mt-6 grid grid-cols-1 gap-4 xl:grid-cols-2">
-        
         <div className="rounded-xl p-4 bg-[#E7F3F8]">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="font-medium text-[#347FA9]">Latest from Bitscale</h3>
@@ -86,7 +83,6 @@ const WelcomeSection = () => {
           </div>
         </div>
 
-        
         <div
           className="rounded-xl border-[#E7F3F8] p-5 border-[1px]"
           style={{
@@ -109,7 +105,6 @@ const WelcomeSection = () => {
             </div>
           </div>
 
-          
           <div className="mt-4">
             <div className="h-2 overflow-hidden rounded-full bg-slate-200">
               <div className="h-full w-[75%] rounded-full bg-emerald-600"></div>
@@ -120,7 +115,6 @@ const WelcomeSection = () => {
             </div>
           </div>
 
-          
           <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
             <div className="flex items-center gap-2 text-sm text-slate-700">
               <CheckCircle2 size={16} className="fill-sky-500 text-white" />
