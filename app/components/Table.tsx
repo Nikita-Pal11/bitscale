@@ -8,6 +8,7 @@ import {
   MoreHorizontal,
   Search,
   ListFilter,
+  ListIcon,
 } from "lucide-react";
 
 const data = [
@@ -125,7 +126,7 @@ export default function Table() {
           </div>
 
           <button className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100">
-            <ListFilter size={16} />
+            <ListIcon size={16} strokeWidth={2} />
           </button>
         </div>
       </div>
@@ -142,7 +143,9 @@ export default function Table() {
 
               <th className="w-48 py-3 font-medium text-gray-800">Edited by</th>
 
-              <th className="w-40 py-3 font-medium text-gray-800">Last edited</th>
+              <th className="w-40 py-3 font-medium text-gray-800">
+                Last edited
+              </th>
 
               <th className="w-20 py-3 font-medium text-gray-800">Actions</th>
             </tr>
@@ -158,19 +161,28 @@ export default function Table() {
                         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-400">
                           <Search size={24} />
                         </div>
-                        <p className="font-semibold text-slate-700">No results found</p>
+                        <p className="font-semibold text-slate-700">
+                          No results found
+                        </p>
                         <p className="text-sm text-slate-400 max-w-xs">
-                          We couldn't find any matching grids or workbooks for "{searchQuery}".
+                          We couldn't find any matching grids or workbooks for "
+                          {searchQuery}".
                         </p>
                       </>
                     ) : (
                       <>
                         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-amber-50 text-amber-500">
-                          <Star size={24} className="fill-amber-400 text-amber-400" />
+                          <Star
+                            size={24}
+                            className="fill-amber-400 text-amber-400"
+                          />
                         </div>
-                        <p className="font-semibold text-slate-700">No starred items yet</p>
+                        <p className="font-semibold text-slate-700">
+                          No starred items yet
+                        </p>
                         <p className="text-sm text-slate-400 max-w-xs">
-                          Click the star icon next to a grid or workbook to add it here for quick access.
+                          Click the star icon next to a grid or workbook to add
+                          it here for quick access.
                         </p>
                       </>
                     )}
@@ -210,27 +222,34 @@ export default function Table() {
                           <AvatarGroup>
                             <Avatar size="sm">
                               <AvatarImage
-                                src={"https://img.icons8.com/color/48/linkedin.png"}
+                                src={
+                                  "https://img.icons8.com/color/48/linkedin.png"
+                                }
                               />
                               <AvatarFallback>{item.editor}</AvatarFallback>
                             </Avatar>
                             <Avatar size="sm">
                               <AvatarImage
-                                src={"https://img.icons8.com/color/48/csv.png"}
+                                src={"https://img.icons8.com/color/48/google-maps.png"}
                               />
                               <AvatarFallback>{item.editor}</AvatarFallback>
                             </Avatar>
                             <Avatar size="sm">
                               <AvatarImage
-                                src={"https://img.icons8.com/color/48/linkedin.png"}
+                                src={
+                                  "https://img.icons8.com/color/48/linkedin.png"
+                                }
                               />
                               <AvatarFallback>{item.editor}</AvatarFallback>
                             </Avatar>
                           </AvatarGroup>
                         ) : (
                           <div className="w-8 h-8 rounded-md bg-white flex justify-center items-center border border-slate-100">
-                            <Avatar size="sm">
-                              <AvatarImage src={item.icon} />
+                            <Avatar size="sm" className="after:border-none"> 
+                              <AvatarImage
+                                src={item.icon}
+                                className="after:border-none"
+                              />
                               <AvatarFallback>{item.editor}</AvatarFallback>
                             </Avatar>
                           </div>
@@ -239,7 +258,9 @@ export default function Table() {
                     </td>
 
                     <td className="py-3.5 pl-4">
-                      <p className="text-sm font-medium text-slate-700">{item.name}</p>
+                      <p className="text-sm font-medium text-slate-700">
+                        {item.name}
+                      </p>
                     </td>
 
                     <td className="py-3.5">
@@ -250,11 +271,15 @@ export default function Table() {
                           className="h-8 w-8 rounded-full"
                         />
 
-                        <span className="text-sm text-slate-700 truncate">{item.editor}</span>
+                        <span className="text-sm text-slate-700 truncate">
+                          {item.editor}
+                        </span>
                       </div>
                     </td>
 
-                    <td className="py-3.5 text-sm text-slate-500">{item.date}</td>
+                    <td className="py-3.5 text-sm text-slate-500">
+                      {item.date}
+                    </td>
 
                     <td className="py-3.5 flex items-center justify-center">
                       <button className="text-slate-400 hover:text-slate-700 transition-colors">

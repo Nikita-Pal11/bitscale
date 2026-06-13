@@ -62,6 +62,7 @@ const Sidebar = () => {
         className={`
           fixed top-0 left-0 z-50 h-screen w-[260px]
           bg-white border-r transition-transform duration-300
+          flex flex-col
           ${open ? "translate-x-0" : "-translate-x-full"}
           md:translate-x-0
         `}
@@ -72,7 +73,10 @@ const Sidebar = () => {
             alt="Bitscale Logo"
             className="h-8 object-contain"
           />
-          <button onClick={closeSidebar} className="md:hidden text-slate-700 hover:text-slate-900 transition-colors pr-2">
+          <button
+            onClick={closeSidebar}
+            className="md:hidden text-slate-700 hover:text-slate-900 transition-colors pr-2"
+          >
             <X size={20} />
           </button>
         </div>
@@ -87,7 +91,10 @@ const Sidebar = () => {
                 </AvatarFallback>
               </Avatar>
               <Avatar className="h-8 w-8 sm:h-9 sm:w-9">
-                <AvatarImage src="https://i.pravatar.cc/150" alt="User avatar" />
+                <AvatarImage
+                  src="https://i.pravatar.cc/150"
+                  alt="User avatar"
+                />
                 <AvatarFallback className="bg-green-100 text-green-700 text-xs font-bold dark:bg-green-900 dark:text-green-300">
                   CN
                 </AvatarFallback>
@@ -95,10 +102,10 @@ const Sidebar = () => {
             </AvatarGroup>
             <span className="font-medium">GTM Spaces</span>
           </div>
-          <HiChevronUpDown size={16}/>
+          <HiChevronUpDown size={16} />
         </div>
 
-        <div className="px-6">
+        <div className="flex-1 overflow-y-auto no-scrollbar px-6 py-2">
           <p className="mb-3 text-xs font-medium uppercase tracking-wide text-gray-500">
             Home
           </p>
@@ -122,44 +129,57 @@ const Sidebar = () => {
                     <span>{item.name}</span>
                   </div>
 
-                  {item.badge ? item.badge : item.active && <ChevronRight size={16} />}
+                  {item.badge
+                    ? item.badge
+                    : item.active && <ChevronRight size={16} />}
                 </button>
               );
             })}
           </div>
-        </div>
 
-        <div className="mt-8 px-6">
-          <p className="mb-3 text-xs font-medium uppercase tracking-wide text-gray-400">
-            Other
-          </p>
+          <div className="mt-8">
+            <p className="mb-3 text-xs font-medium uppercase tracking-wide text-gray-400">
+              Other
+            </p>
 
-          <div className="space-y-1">
-            <button
-              onClick={closeSidebar}
-              className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-gray-600 hover:bg-gray-100"
-            >
-              <BookOpen size={18} />
-              Documentation
-            </button>
+            <div className="space-y-1">
+              <button
+                onClick={closeSidebar}
+                className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-gray-600 hover:bg-gray-100"
+              >
+                <BookOpen size={18} />
+                Documentation
+              </button>
 
-            <button
-              onClick={closeSidebar}
-              className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-gray-600 hover:bg-gray-100"
-            >
-              <Settings size={18} />
-              Settings
-            </button>
+              <button
+                onClick={closeSidebar}
+                className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-gray-600 hover:bg-gray-100"
+              >
+                <Settings size={18} />
+                Settings
+              </button>
+            </div>
           </div>
         </div>
 
-        <div className="absolute bottom-0 w-full border-t bg-gray-50 p-4 flex flex-col gap-1">
-          <img
-            src="/logo.png"
-            alt="Bitscale Logo"
-            className="h-5 object-contain self-start"
-          />
-          <p className="text-xs text-gray-500">Get Support at Bitscale</p>
+        <div className="p-4 mt-auto">
+          <button className="w-full flex items-center justify-between bg-[#f4f5f8] hover:bg-[#e9ebf0] rounded-[8px] px-4 py-3.5 transition-colors">
+            <div className="flex flex-col text-left">
+              <div className="flex items-center">
+                <img
+                  src="/logo.png"
+                  alt="bitscale"
+                  className="h-3.5 opacity-90"
+                />
+              </div>
+              <div className="text-[12px] text-[#4b5563] mt-1 font-medium">
+                Get Support at Bitscale
+              </div>
+            </div>
+            <div className="text-[#1f2937]">
+              <ChevronUp size={16} strokeWidth={3} />
+            </div>
+          </button>
         </div>
       </aside>
     </>

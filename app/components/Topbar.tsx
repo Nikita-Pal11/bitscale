@@ -22,14 +22,14 @@ export default function Topbar() {
           <div className="flex items-center gap-2">
             <FaCoins className="h-3.5 w-3.5 shrink-0 text-[#438361] sm:h-4 sm:w-4" />
             <span className="sm:hidden">
-              {formatNumber(USED_CREDITS)}
-              <span className="text-[#438361] mx-0.5">/</span>
-              {formatNumber(TOTAL_CREDITS)}
+              <span className="text-[#468364]">{formatNumber(USED_CREDITS)}</span>
+              <span className="text-[#468364] mx-0.5">/</span>
+              <span className="text-[#468364]">{formatNumber(TOTAL_CREDITS)}</span>
             </span>
             <span className="hidden sm:inline">
-              {USED_CREDITS.toLocaleString()}
-              <span className="text-[#438361] mx-1">/</span>
-              {TOTAL_CREDITS.toLocaleString()}
+              <span className="text-[#468364]">{USED_CREDITS.toString()}</span>
+              <span className="text-[#468364] mx-1">/</span>
+              <span className="text-[#468364]">{TOTAL_CREDITS.toString()}</span>
             </span>
           </div>
           <div>

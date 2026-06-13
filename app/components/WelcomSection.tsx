@@ -2,30 +2,34 @@
 
 import { useState, useEffect } from "react";
 import { Building2, Users, Plus, CheckCircle2, Circle } from "lucide-react";
-import FindCompanyModal from "./Company.tsx/FindCompanyModal";
+import FindCompanyModal from "./FindPeople/FindPeopleModal";
 import { FaFileCircleCheck } from "react-icons/fa6";
 
 const CAROUSEL_DATA = [
   {
-    theme: { bg: '#f2f7fb', accent: '#417e9f', dotInactive: '#a4bed0' },
-    title: 'How to Integrate 2 Way HubSpot',
-    description: 'Prerequisites for this Integration is that you should have a HubSpot account and Copy the API key. We simple aad our API key through the integrations pa...'
+    theme: { bg: "#f2f7fb", accent: "#417e9f", dotInactive: "#a4bed0" },
+    title: "How to Integrate 2 Way HubSpot",
+    description:
+      "Prerequisites for this Integration is that you should have a HubSpot account and Copy the API key. We simple aad our API key through the integrations pa...",
   },
   {
-    theme: { bg: '#fdf4f6', accent: '#c44a78', dotInactive: '#dfa6ba' },
-    title: 'How to find LinkedIn Post using Bitscale',
-    description: 'This walkthrough covers how you can find the top performing posts on LinkedIn based on a keyword and all information of the people who posted...'
+    theme: { bg: "#fdf4f6", accent: "#c44a78", dotInactive: "#dfa6ba" },
+    title: "How to find LinkedIn Post using Bitscale",
+    description:
+      "This walkthrough covers how you can find the top performing posts on LinkedIn based on a keyword and all information of the people who posted...",
   },
   {
-    theme: { bg: '#f4f8f4', accent: '#468364', dotInactive: '#97bca9' },
-    title: 'How to set Custom API in waterfall',
-    description: 'This walkthrough covers how you can find the top performing posts on LinkedIn based on a keyword and all information of the people who posted...'
+    theme: { bg: "#f4f8f4", accent: "#468364", dotInactive: "#97bca9" },
+    title: "How to set Custom API in waterfall",
+    description:
+      "This walkthrough covers how you can find the top performing posts on LinkedIn based on a keyword and all information of the people who posted...",
   },
   {
-    theme: { bg: '#f7f5f9', accent: '#876ea4', dotInactive: '#c0b0cf' },
-    title: 'Introducing Grid Scheduling',
-    description: 'This walkthrough covers how you can find the top performing posts on LinkedIn based on a keyword and all information of the people who posted...'
-  }
+    theme: { bg: "#f7f5f9", accent: "#876ea4", dotInactive: "#c0b0cf" },
+    title: "Introducing Grid Scheduling",
+    description:
+      "This walkthrough covers how you can find the top performing posts on LinkedIn based on a keyword and all information of the people who posted...",
+  },
 ];
 
 const WelcomeSection = () => {
